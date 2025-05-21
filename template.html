@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Text Copier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #A0B4D4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #333;
+            padding: 20px;
+            border-radius: 8px;
+            width: 320px;
+            text-align: center;
+        }
+        .button-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+        button {
+            background: #ccc;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .text-box {
+            background: white;
+            padding: 15px;
+            text-align: left;
+            min-height: 100px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: none;
+        }
+        .text-box textarea {
+            width: 100%;
+            height: 100px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            resize: none;
+        }
+        .copy-btn {
+            background: #ccc;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="button-group">
+        <button onclick="showText(1)">Ganti WiFi 1</button>
+        <button onclick="showText(2)">Ganti WiFi 2</button>
+        <button onclick="showText(3)">Isi Data</button>
+        <button onclick="showText(4)">Price List</button>
+        <button onclick="createTemplate()">Buat Template Baru</button>
+    </div>
+
+    <div class="text-box" id="textBox">
+        <textarea id="textContent"></textarea>
+    </div>
+
+    <button class="copy-btn" onclick="copyText()">Copy</button>
+</div>
+
+<script>
+    const templates = {
+        1: `Berikut langkah-langkah mengganti password wifi secara mandiri kak
+1. Masuk Google / Chrome
+2. Masukan => 192.168.1.1 (Pastikan terhubung ke wifi yang akan diganti) 
+3. Username : admin  | Password : admin 
+4. Pilih menu Network
+   * SSID Name (untuk ganti nama)
+   * WPA Pre-Shared Key (untuk ganti password)
+5. Setelah ganti nama & password tekan submit`,
+
+        2: `Berikut untuk langkah-langkah mengganti password secara mandiri kak
+1. Buka Browser 
+2. Ketik : 192.168.1.1
+3. Masukkan username: user | password: user
+4. Pilih Network>WLAN>ssid setting (untuk ganti nama WiFi)
+5. Pilih Network>WLAN>security (untuk ganti password)`,
+
+        3: `Mohon dibantu mengisikan data berikut kak :
+Nama: 
+Nomor whatsapp yang aktif dan bisa dihubungi: 
+Alamat lengkap: 
+Share location melalui google maps:`,
+
+        4: `Berikut untuk Price List layanan Wi-Fi Zetta 
+Berikut kami informasikan terkait pricelist layanan wifi Zetta:
+- Layanan up to 25 mbps 150.000 per bulan
+- Layanan up to 50 mbps 200.000 per bulan
+- Layanan up to 100 mbps 250.000 per bulan
+Biaya tersebut belum terhitung PPN 11%
+Untuk pemasangan baru, pelanggan tidak dibebankan biaya pemasangan`
+    };
+
+    function showText(index) {
+        document.getElementById("textContent").value = templates[index];
+        document.getElementById("textBox").style.display = "block";
+    }
+
+    function createTemplate() {
+        document.getElementById("textContent").value = "";
+        document.getElementById("textBox").style.display = "block";
+    }
+
+    function copyText() {
+        const text = document.getElementById("textContent").value;
+        navigator.clipboard.writeText(text).then(() => {
+            alert("Teks berhasil disalin!");
+        });
+    }
+</script>
+
+</body>
+</html>

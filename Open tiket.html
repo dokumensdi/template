@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Dear Team</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea, select, button {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulir Dear Team</h1>
+    <form id="customerForm">
+        <label for="ticketNumber">Nomor Tiket</label>
+        <input type="text" id="ticketNumber" name="ticketNumber" required>
+
+        <label for="picName">PIC Pelanggan</label>
+        <input type="text" id="picName" name="picName" required>
+
+        <label for="address">Alamat</label>
+        <textarea id="address" name="address" rows="3" required></textarea>
+
+        <label for="phone">Telepon</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="serviceType">Service Type</label>
+        <input type="text" id="serviceType" name="serviceType" required>
+
+        <label for="capacity">Kapasitas</label>
+        <input type="text" id="capacity" name="capacity" required>
+
+        <label for="pop">POP</label>
+        <input type="text" id="pop" name="pop" required>
+
+        <label for="idCust">ID Cust</label>
+        <input type="text" id="idCust" name="idCust" required>
+
+        <label for="issue">Indikasi Masalah</label>
+        <textarea id="issue" name="issue" rows="2" required></textarea>
+
+        <label for="filledBy">Nama Pengisi Form</label>
+        <input type="text" id="filledBy" name="filledBy" required>
+
+        <button type="button" onclick="generateTemplate()">Submit</button>
+        <button type="button" onclick="copyTemplate()">Copy Template</button>
+    </form>
+
+    <h2>Hasil Template</h2>
+    <div class="output" id="output"></div>
+
+    <script>
+        function generateTemplate() {
+            const ticketNumber = document.getElementById('ticketNumber').value;
+            const picName = document.getElementById('picName').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const serviceType = document.getElementById('serviceType').value;
+            const capacity = document.getElementById('capacity').value;
+            const pop = document.getElementById('pop').value;
+            const idCust = document.getElementById('idCust').value;
+            const issue = document.getElementById('issue').value;
+            const filledBy = document.getElementById('filledBy').value;
+
+            const template = `Dear team,
+Mohon bantuan pengecekan pelanggan berikut ini:
+
+Nomor tiket: ${ticketNumber}
+
+- PIC Pelanggan: ${picName}
+- Alamat: ${address}
+- Telepon: ${phone}
+- Email: ${email}
+- Service Type: ${serviceType}
+- Kapasitas: ${capacity}
+- POP: ${pop}
+- ID Cust: ${idCust}
+
+Indikasi: ${issue}
+
+Demikian kami sampaikan,
+terima kasih
+${filledBy}`;
+
+            document.getElementById('output').textContent = template;
+        }
+
+        function copyTemplate() {
+            const output = document.getElementById('output').textContent;
+            if (output) {
+                navigator.clipboard.writeText(output)
+                    .then(() => alert("Template berhasil disalin ke clipboard!"))
+                    .catch(() => alert("Gagal menyalin template. Silakan coba lagi."));
+            } else {
+                alert("Tidak ada template untuk disalin. Silakan isi formulir dan tekan Submit.");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pendingan Maintenance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea, select, button {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            margin-bottom: 10px;
+        }
+        .customer-block {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .customer-block h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulir Pendingan Maintenance</h1>
+    <form id="maintenanceForm">
+        <div class="customer-block" id="customer1">
+            <h3>Data Pelanggan 1</h3>
+            <label for="ticketNumber1">Nomor Tiket</label>
+            <input type="text" id="ticketNumber1" required>
+
+            <label for="picName1">PIC</label>
+            <input type="text" id="picName1" required>
+
+            <label for="customerId1">ID Pelanggan</label>
+            <input type="text" id="customerId1" required>
+
+            <label for="address1">Alamat</label>
+            <textarea id="address1" rows="3" required></textarea>
+
+            <label for="phone1">Telepon</label>
+            <input type="text" id="phone1" required>
+
+            <label for="status1">Status</label>
+            <select id="status1" required>
+                <option value="PENDING/BELUM CLOSE">PENDING/BELUM CLOSE</option>
+                <option value="CLOSE">CLOSE</option>
+            </select>
+
+            <label for="indication1">Indikasi</label>
+            <select id="indication1" required>
+                <option value="Modem LOS">Modem LOS</option>
+                <option value="Modem Hang">Modem Hang</option>
+                <option value="No Internet">No Internet</option>
+                <option value="Low Power">Low Power</option>
+            </select>
+        </div>
+
+        <div class="customer-block" id="customer2">
+            <h3>Data Pelanggan 2</h3>
+            <label for="ticketNumber2">Nomor Tiket</label>
+            <input type="text" id="ticketNumber2" required>
+
+            <label for="picName2">PIC</label>
+            <input type="text" id="picName2" required>
+
+            <label for="customerId2">ID Pelanggan</label>
+            <input type="text" id="customerId2" required>
+
+            <label for="address2">Alamat</label>
+            <textarea id="address2" rows="3" required></textarea>
+
+            <label for="phone2">Telepon</label>
+            <input type="text" id="phone2" required>
+
+            <label for="status2">Status</label>
+            <select id="status2" required>
+                <option value="PENDING/BELUM CLOSE">PENDING/BELUM CLOSE</option>
+                <option value="CLOSE">CLOSE</option>
+            </select>
+
+            <label for="indication2">Indikasi</label>
+            <select id="indication2" required>
+                <option value="Modem LOS">Modem LOS</option>
+                <option value="Modem Hang">Modem Hang</option>
+                <option value="No Internet">No Internet</option>
+                <option value="Low Power">Low Power</option>
+            </select>
+        </div>
+
+        <div class="customer-block" id="customer3">
+            <h3>Data Pelanggan 3</h3>
+            <label for="ticketNumber3">Nomor Tiket</label>
+            <input type="text" id="ticketNumber3" required>
+
+            <label for="picName3">PIC</label>
+            <input type="text" id="picName3" required>
+
+            <label for="customerId3">ID Pelanggan</label>
+            <input type="text" id="customerId3" required>
+
+            <label for="address3">Alamat</label>
+            <textarea id="address3" rows="3" required></textarea>
+
+            <label for="phone3">Telepon</label>
+            <input type="text" id="phone3" required>
+
+            <label for="status3">Status</label>
+            <select id="status3" required>
+                <option value="PENDING/BELUM CLOSE">PENDING/BELUM CLOSE</option>
+                <option value="CLOSE">CLOSE</option>
+            </select>
+
+            <label for="indication3">Indikasi</label>
+            <select id="indication3" required>
+                <option value="Modem LOS">Modem LOS</option>
+                <option value="Modem Hang">Modem Hang</option>
+                <option value="No Internet">No Internet</option>
+                <option value="Low Power">Low Power</option>
+            </select>
+        </div>
+
+        <label for="filledBy">Nama Pengisi Form</label>
+        <input type="text" id="filledBy" required>
+
+        <button type="button" onclick="generateTemplate()">Submit</button>
+        <button type="button" onclick="copyTemplate()">Copy Template</button>
+    </form>
+
+    <h2>Hasil Template</h2>
+    <div class="output" id="output"></div>
+
+    <script>
+        function generateTemplate() {
+            const filledBy = document.getElementById('filledBy').value;
+
+            const customers = [1, 2, 3].map(i => {
+                return `Nomor Tiket: ${document.getElementById(`ticketNumber${i}`).value}
+PIC: ${document.getElementById(`picName${i}`).value}
+ID Pelanggan: ${document.getElementById(`customerId${i}`).value}
+Alamat: ${document.getElementById(`address${i}`).value}
+Telepon: ${document.getElementById(`phone${i}`).value}
+Status: ${document.getElementById(`status${i}`).value}
+Indikasi: ${document.getElementById(`indication${i}`).value}`;
+            }).join("\n\n");
+
+            const template = `PENDINGAN
+Dear Team,
+Izin untuk menyampaikan UPDATE PENDINGAN MAINTENANCE
+
+${customers}
+
+Nama Pengisi Form: ${filledBy}`;
+
+            document.getElementById('output').textContent = template;
+        }
+
+        function copyTemplate() {
+            const output = document.getElementById('output').textContent;
+            if (output) {
+                navigator.clipboard.writeText(output)
+                    .then(() => alert("Template berhasil disalin ke clipboard!"))
+                    .catch(() => alert("Gagal menyalin template. Silakan coba lagi."));
+            } else {
+                alert("Tidak ada template untuk disalin. Silakan isi formulir dan tekan Submit.");
+            }
+        }
+    </script>
+</body>
+</html>
