@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Customer Care & Service Tools</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+    }
+
+    .container {
+      background-color: #2e2e2e;
+      padding: 20px;
+      border-radius: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      width: 90%;
+      max-width: 420px;
+    }
+
+    .title {
+      grid-column: span 2;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .menu-button {
+      background-color: #1a1a1a;
+      border: none;
+      border-radius: 15px;
+      padding: 20px;
+      color: white;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-button:hover {
+      background-color: #FF535F;
+    }
+
+    .menu-button svg {
+      width: 28px;
+      height: 28px;
+      margin-bottom: 10px;
+      stroke: white;
+      stroke-width: 2;
+      fill: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="title">CUSTOMER CARE & SERVICE TOOLS</div>
+
+  <button class="menu-button" onclick="location.href='Pendingan.html'">
+    <!-- Icon Clock -->
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Pendingan Maintenance
+  </button>
+
+  <button class="menu-button" onclick="location.href='billing.html'">
+    <!-- Icon File -->
+    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    Template Billing
+  </button>
+
+  <button class="menu-button" onclick="location.href='template.html'">
+    <!-- Icon Edit -->
+    <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+    Template Text
+  </button>
+
+  <button class="menu-button" onclick="location.href='Open tiket.html'">
+    <!-- Icon Plus Circle -->
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+    Open Ticket
+  </button>
+</div>
+
+</body>
+</html>
